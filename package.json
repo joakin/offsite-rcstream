@@ -1,0 +1,29 @@
+{
+  "name": "rcstream",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server",
+    "build": "webpack",
+    "deploy": "npm run build"
+  },
+  "author": "Joaquin Oltra <joaquin@chimeces.com> (http://chimeces.com)",
+  "license": "ISC",
+  "dependencies": {
+    "hjs-webpack": "^3.1.0",
+    "socket.io": "^0.9.6"
+  },
+  "devDependencies": {
+    "autoprefixer": "^6.0.3",
+    "babel-loader": "^5.3.2",
+    "css-loader": "^0.20.2",
+    "less": "^2.5.3",
+    "less-loader": "^2.2.1",
+    "postcss-loader": "^0.7.0",
+    "style-loader": "^0.13.0",
+    "url-loader": "^0.5.6",
+    "webpack": "^1.12.2",
+    "webpack-dev-server": "^1.12.1"
+  }
+}
