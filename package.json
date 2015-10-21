@@ -11,7 +11,9 @@
   "author": "Joaquin Oltra <joaquin@chimeces.com> (http://chimeces.com)",
   "license": "ISC",
   "dependencies": {
+    "file-loader": "^0.8.4",
     "hjs-webpack": "^3.1.0",
+    "react-dom": "^0.14.0",
     "socket.io": "^0.9.6"
   },
   "devDependencies": {

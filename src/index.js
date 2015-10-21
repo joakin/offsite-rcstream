@@ -1,6 +1,7 @@
-import add from './foo.js'
+import React from 'react'
+import ReactDOM from 'react-dom'
+
 import './index.less'
+import App from './ui/app.js'
 
-console.log(add(1))
-
-document.write('hello')
+ReactDOM.render(<App />, document.body)
