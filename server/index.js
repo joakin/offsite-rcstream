@@ -37,7 +37,7 @@ server.listen(9999, '0.0.0.0')
 // Connect to rc stream and broadcast the messages
 var socket = io.connect('stream.wikimedia.org/rc')
 socket.on('connect', function() {
-  socket.emit('subscribe', 'commons.wikimedia.org')
+  socket.emit('subscribe', '*')
 })
 socket.on('change', function(data) {
   console.log(data.title)
