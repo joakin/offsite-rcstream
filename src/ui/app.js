@@ -1,11 +1,12 @@
 import React from 'react'
-import Edit from './edit'
+import EditList from './edit-list'
 
 export default React.createClass({
   render: function() {
-    var edits = this.props.edits.reverse().slice(0,10).map((e) => <Edit edit={e} />)
     return (
-      <div>{edits}</div>
+      <div>
+        <EditList edits={this.props.edits}></EditList>
+      </div>
     )
   }
 })
