@@ -3,6 +3,7 @@ import React from 'react'
 export default React.createClass({
   render: function() {
     var speedClass;
+    var units = this.props.units || 'edits/second';
     var speed = this.props.speed.toFixed(2);
 
     if ( speed < 1 ) {
@@ -15,7 +16,7 @@ export default React.createClass({
     return (
       <div className={"Speedometer " + speedClass}>
         <span className="value">{speed}</span>
-        <span className="units">edits/second</span>
+        <span className="units">{units}</span>
       </div>
     )
   }
