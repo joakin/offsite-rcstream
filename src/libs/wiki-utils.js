@@ -13,6 +13,17 @@ var logos = {
   wikiquote: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Wikiquote-logo.svg/100px-Wikiquote-logo.svg.png',
 };
 
+var urls = {
+  mediawikiwiki: 'mediawiki.org',
+  wikisource: 'wikisource.org',
+  commonswiki: 'commons.wikimedia.org',
+  wiki: 'wikipedia.org',
+  wiktionary: 'wiktionary.org',
+  wikidatawiki: 'wikidata.org',
+  wikivoyage: 'wikivoyage.org',
+  wikiquote:  'wikiquote.org',
+};
+
 var getCodes = function( wiki ) {
   var lang;
   var p;
@@ -50,8 +61,16 @@ var getLogo = function ( wiki ) {
   return src;
 };
 
+var getUrl = function ( title, wiki ) {
+  var code = getCodes( wiki );
+  var base = urls[code[1]];
+  var prefix = code[0] === '*' ? 'http://' : 'http://' + code[0] + '.';
+  return prefix + base + '/wiki/' + title;
+};
+
 module.exports = {
   getCodes: getCodes,
   getLanguage: getLanguage,
   getLogo: getLogo,
+  getUrl: getUrl,
 };

@@ -7,9 +7,11 @@ import App from './ui/app.js'
 import stream from './net/rc.js'
 import editsPerSecondStream from './streams/edits-per-second.js'
 import botsVsHumansStream from './streams/bots-vs-humans.js'
+import Leaderboard from './libs/leaderboard.js'
 
 function render() {
   ReactDOM.render(<App edits={edits} speed={speed} botScore={botScore} titles={titles}
+    leaderboard={leaderboard}
     startTime={startTime}/>,
     document.body)
 }
@@ -23,12 +25,19 @@ var botScore = 0;
 var titles = {
   0: {}
 };
+var leaderboard = new Leaderboard();
 
 bots.on('message', (m) => { botScore = m; render(); })
 stream.on('message', (m) => {
   if ( m.namespace === 0 ) {
-    titles[0][m.title] = titles[0][m.title] || 0;
-    titles[0][m.title] += 1;
+    var item = titles[0][m.title] || {
+      title: m.title,
+      wiki: m.wiki,
+      edits: 0,
+    }
+    item.edits += 1;
+    leaderboard.addItem(item);
+    titles[0][m.title] = item;
   }
   edits.push(m);
   edits = edits.slice( -10 );
@@ -36,3 +45,4 @@ stream.on('message', (m) => {
 })
 eps.on('message', (m) => { speed = m; render(); })
 render();
+
