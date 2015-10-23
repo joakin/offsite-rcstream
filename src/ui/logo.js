@@ -5,6 +5,7 @@ export default React.createClass({
     var wiki = this.props.wiki;
     var src;
     var projects = [ 'test2wiki', 'wikidatawiki', 'mediawikiwiki', 'wikisource',
+      'wikimania',
       'commonswiki', 'wiki', 'wiktionary' ];
     // from https://commons.wikimedia.org/wiki/Category:High-resolution_official_Wikimedia_logos
     var logos = {
