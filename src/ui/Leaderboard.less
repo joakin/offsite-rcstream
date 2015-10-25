@@ -1,0 +1,30 @@
+ol.Leaderboard {
+  counter-reset: li; /* Initiate a counter */
+  border: solid 1px black;
+  margin-left: 0;
+  padding-left: 1em;
+  background-color: #EFEFEF;
+
+  > li:before {
+    content: counter(li); /* Use the counter as content */
+    counter-increment:li; /* Increment the counter by 1 */
+    position: absolute;
+    left: 0px;
+    top: 12px; /* match top padding of li element */
+    color: #999999;
+    font-weight: bold;
+    font-size: 2em;
+  }
+  li {
+    border-bottom: dotted 1px #9A9A9A;
+    padding-bottom: 10px;
+    padding-top: 12px;
+    list-style: none;
+    padding-left: 32px;
+    position: relative;
+  }
+  p,
+  h2 {
+    margin: 0;
+  }
+}
