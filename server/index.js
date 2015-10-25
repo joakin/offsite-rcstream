@@ -40,6 +40,6 @@ socket.on('connect', function() {
   socket.emit('subscribe', '*')
 })
 socket.on('change', function(data) {
-  console.log(data.title)
+  // console.log(data.title)
   broadcast(data)
 })
