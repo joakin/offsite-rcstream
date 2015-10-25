@@ -1,6 +1,10 @@
 var getConfig = require('hjs-webpack')
 
+var isDev = process.env.NODE_ENV === 'development'
+
 module.exports = getConfig({
+  isDev: isDev,
+
   // entry point for the app
   in: 'src/index.js',
 
