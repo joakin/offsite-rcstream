@@ -5,7 +5,7 @@ export default React.createClass({
     return (
       <div className="Panel">
         <h2 className="title">{this.props.title}</h2>
-        {this.props.contents}
+        {this.props.children}
       </div>
     )
   }
