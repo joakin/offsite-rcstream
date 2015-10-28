@@ -1,5 +1,6 @@
 import React from 'react'
-import utils from './../libs/wiki-utils'
+import utils from './../../libs/wiki-utils'
+import './Logo.less'
 
 export default React.createClass({
   render: function() {

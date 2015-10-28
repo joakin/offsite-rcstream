@@ -1,5 +1,5 @@
 import React from 'react'
-import utils from './../libs/wiki-utils'
+import utils from './../../libs/wiki-utils'
 
 export default React.createClass({
   render: function() {

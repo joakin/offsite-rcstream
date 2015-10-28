@@ -1,4 +1,5 @@
 import React from 'react'
+import './JudgementDayPanel.less'
 
 export default React.createClass({
   render: function() {

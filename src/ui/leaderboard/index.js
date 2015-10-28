@@ -1,5 +1,6 @@
 import React from 'react'
 import LeaderboardItem from './leaderboard-item'
+import './Leaderboard.less'
 
 export default React.createClass({
   render: function() {

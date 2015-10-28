@@ -1,4 +1,5 @@
 import React from 'react'
+import './Speedometer.less'
 
 export default React.createClass({
   render: function() {
