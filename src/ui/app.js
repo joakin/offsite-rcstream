@@ -13,6 +13,8 @@ export default React.createClass({
           nsTitles={this.props.titles['0']} startTime={this.props.startTime}></EditsPerHourPanel>
         <Leaderboard leaderboard={this.props.leaderboards['*']}></Leaderboard>
         <Leaderboard leaderboard={this.props.leaderboards['enwiki']}></Leaderboard>
+        <Leaderboard leaderboard={this.props.leaderboards['user']}></Leaderboard>
+        <Leaderboard leaderboard={this.props.leaderboards['bot']}></Leaderboard>
         <JudgementDayPanel botScore={this.props.botScore}></JudgementDayPanel>
         <SpeedCheckPanel speed={this.props.speed}></SpeedCheckPanel>
         <EditList edits={this.props.edits}></EditList>
