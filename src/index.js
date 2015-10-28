@@ -10,9 +10,8 @@ import botsVsHumansStream from './streams/bots-vs-humans.js'
 import Leaderboard from './libs/leaderboard.js'
 
 function render() {
-  console.log(leaderboards);
   ReactDOM.render(<App edits={edits} speed={speed} botScore={botScore} titles={titles}
-    leaderboards={leaderboards}
+    leaderboards={leaderboards} users={users}
     startTime={startTime}/>,
     document.getElementById('app'))
 }
@@ -26,13 +25,33 @@ var botScore = 0;
 var titles = {
   0: {}
 };
+var users = {};
 var leaderboards = {
   '*': new Leaderboard(),
 };
 
+var getLeaderboard = function( id ) {
+  var leaderboard = leaderboards[id];
+  if ( !leaderboard ) {
+    leaderboard = new Leaderboard();
+    leaderboards[id] = leaderboard;
+  }
+  return leaderboard;
+};
+
 bots.on('message', (m) => { botScore = m; render(); })
 stream.on('message', (m) => {
-  var leaderboard;
+  var leaderboard = getLeaderboard( m.bot ? 'bot' : 'user' );
+  var username = 'User:' + m.user;
+  users[m.user] = users[m.user] || {
+    title: username,
+    bot: m.bot,
+    wiki: m.wiki,
+    edits: 0
+  };
+  users[m.user].edits +=1 ;
+  leaderboard.addItem(users[m.user]);
+
   if ( m.namespace === 0 ) {
     var wiki = m.wiki;
     var item = titles[0][m.title] || {
@@ -43,11 +62,7 @@ stream.on('message', (m) => {
     item.edits += 1;
 
     // select the leaderboard for this wiki
-    leaderboard = leaderboards[wiki];
-    if ( !leaderboard ) {
-      leaderboard = new Leaderboard();
-      leaderboards[wiki] = leaderboard;
-    }
+    leaderboard = getLeaderboard(wiki);
     leaderboard.addItem(item);
     // also add to the global leaderboard
     leaderboards['*'].addItem(item);
@@ -59,4 +74,3 @@ stream.on('message', (m) => {
 })
 eps.on('message', (m) => { speed = m; render(); })
 render();
-

@@ -9,7 +9,10 @@ var sock = new SockJS('/rc')
   emitter.emit('open')
  }
  sock.onmessage = function(e) {
-   emitter.emit('message', JSON.parse(e.data))
+   var data = JSON.parse(e.data)
+   if ( [ 'test2wiki' ].indexOf(data.wiki) === -1 ) {
+     emitter.emit('message', data)
+   }
  }
  sock.onclose = function() {
    emitter.emit('close')
