@@ -19,5 +19,13 @@ module.exports = getConfig({
   // get a fresh folder. Usually you want this
   // but since it's destructive we make it
   // false by default
-  clearBeforeBuild: true
+  clearBeforeBuild: true,
+
+  html: function (context) {
+    return {
+      'index.html': context.defaultTemplate({
+        html: '<div id="app"></div>'
+      })
+    }
+  }
 })

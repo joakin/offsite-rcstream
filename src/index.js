@@ -14,7 +14,7 @@ function render() {
   ReactDOM.render(<App edits={edits} speed={speed} botScore={botScore} titles={titles}
     leaderboards={leaderboards}
     startTime={startTime}/>,
-    document.body)
+    document.getElementById('app'))
 }
 
 var startTime = new Date();
