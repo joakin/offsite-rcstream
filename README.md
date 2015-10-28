@@ -17,6 +17,8 @@ Requires `node` >= 4.0.0 and suggested `npm` >= 3.0.0.
 Server process and frontend assets will be automatically reloaded/recompiled
 when changed. Just reload the page.
 
+Do `npm run format` for formatting the code automatically.
+
 Production
 ----------
 
