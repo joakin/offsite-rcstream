@@ -32,7 +32,7 @@ Leaderboard.prototype = {
           newArray.splice(i, 0, newItem);
         }
       } );
-      this.items = newArray.slice(0, 10);
+      this.items = newArray.slice(0, 5);
     }
   }
 };
