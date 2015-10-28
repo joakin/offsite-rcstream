@@ -10,22 +10,22 @@ export default React.createClass({
   render: function() {
     return (
       <div className="App">
-        <Panel title="KPIs" contents={[
+        <Panel title="KPIs" key="KPI" contents={[
           <EditsPerHourPanel titles={[ "One Direction", "Justin Bieber"]}
             nsTitles={this.props.titles['0']} startTime={this.props.startTime}></EditsPerHourPanel>,
           <JudgementDayPanel botScore={this.props.botScore}></JudgementDayPanel>
         ]}></Panel>
-        <Panel title="Top edits (all wikis)"
+        <Panel key="top-edits" title="Top edits (all wikis)"
           contents={<Leaderboard leaderboard={this.props.leaderboards['*']}></Leaderboard>}></Panel>
-        <Panel  title="Top edits (enwiki)"
+        <Panel key="top-edits-enwiki" title="Top edits (enwiki)"
           contents={<Leaderboard leaderboard={this.props.leaderboards['enwiki']}></Leaderboard>}></Panel>
-        <Panel  title="Top editors"
+        <Panel key="top-editors" title="Top editors"
           contents={<Leaderboard leaderboard={this.props.leaderboards['user']}></Leaderboard>}></Panel>
-        <Panel title="Top bots"
+        <Panel key="top-bots" title="Top bots"
           contents={<Leaderboard leaderboard={this.props.leaderboards['bot']}></Leaderboard>}></Panel>
-        <Panel title="Speedometers"
+        <Panel key="speedos" title="Speedometers"
           contents={<SpeedCheckPanel speed={this.props.speed}></SpeedCheckPanel>}></Panel>
-        <Panel title="All edits"
+        <Panel key="edit-list" title="All edits"
           contents={<EditList edits={this.props.edits}></EditList>}></Panel>
       </div>
     )

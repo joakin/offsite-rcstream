@@ -27,13 +27,13 @@ var titles = {
 };
 var users = {};
 var leaderboards = {
-  '*': new Leaderboard(),
+  '*': new Leaderboard('*'),
 };
 
 var getLeaderboard = function( id ) {
   var leaderboard = leaderboards[id];
   if ( !leaderboard ) {
-    leaderboard = new Leaderboard();
+    leaderboard = new Leaderboard(id);
     leaderboards[id] = leaderboard;
   }
   return leaderboard;

@@ -1,5 +1,6 @@
-function Leaderboard() {
+function Leaderboard(id) {
   this.items = [];
+  this.id = id;
 }
 
 Leaderboard.prototype = {

@@ -14,6 +14,7 @@ export default React.createClass({
 			}
       speedometers.push(
         <Speedometer speed={speed}
+          key ={title}
           units={"edits to " + title + "/hour"}></Speedometer>
       )
     }
