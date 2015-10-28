@@ -1,8 +1,8 @@
 ol.Leaderboard {
   counter-reset: li; /* Initiate a counter */
   border: solid 1px black;
-  margin-left: 0;
-  padding-left: 1em;
+  margin: 0;
+  padding: 0 .6em;
   background-color: #EFEFEF;
 
   > li:before {
@@ -17,14 +17,19 @@ ol.Leaderboard {
   }
   li {
     border-bottom: dotted 1px #9A9A9A;
-    padding-bottom: 10px;
-    padding-top: 12px;
+    padding: .1em 2em .1em;
     list-style: none;
-    padding-left: 32px;
     position: relative;
   }
   p,
   h2 {
     margin: 0;
   }
+
+  h2 {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 12em;
+	}
 }
