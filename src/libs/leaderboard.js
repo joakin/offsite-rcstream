@@ -11,6 +11,7 @@ Leaderboard.prototype = {
   },
   addItem: function ( newItem, score ) {
     var oldArray = this.items,
+      isSameItem = false,
       inserted = false,
       newArray = [];
 
@@ -20,7 +21,7 @@ Leaderboard.prototype = {
       newArray = oldArray;
       // iterate through array until you find the last item that is.
       oldArray.forEach( function ( item, i ) {
-        var isSameItem = ( item.title === newItem.title && item.wiki === newItem.wiki );
+        isSameItem = ( item.title === newItem.title && item.wiki === newItem.wiki );
         if ( inserted && isSameItem ) {
           // If previously we inserted it remove the old reference
           newArray.splice(i,1);
@@ -32,6 +33,11 @@ Leaderboard.prototype = {
           newArray.splice(i, 0, newItem);
         }
       } );
+      // sort out the last item
+      if ( inserted && isSameItem ) {
+        // If previously we inserted it remove the old reference
+        newArray.splice(newArray.length - 1,1);
+      }
       this.items = newArray.slice(0, 5);
     }
   }
