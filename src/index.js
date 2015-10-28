@@ -14,6 +14,7 @@ function render() {
     leaderboards={leaderboards} users={users}
     startTime={startTime}/>,
     document.getElementById('app'))
+  window.requestAnimationFrame( render );
 }
 
 var startTime = new Date();
@@ -39,7 +40,7 @@ var getLeaderboard = function( id ) {
   return leaderboard;
 };
 
-bots.on('message', (m) => { botScore = m; render(); })
+bots.on('message', (m) => { botScore = m; })
 stream.on('message', (m) => {
   var leaderboard = getLeaderboard( m.bot ? 'bot' : 'user' );
   var username = 'User:' + m.user;
@@ -70,7 +71,7 @@ stream.on('message', (m) => {
   }
   edits.push(m);
   edits = edits.slice( -10 );
-  render();
 })
-eps.on('message', (m) => { speed = m; render(); })
+
+eps.on('message', (m) => { speed = m; })
 render();
