@@ -7,12 +7,12 @@ import Leaderboard from './leaderboard'
 import Panel from './panel'
 
 export default React.createClass({
-  render: function() {
+  render: function () {
     return (
-      <div className="App">
+    <div className="App">
         <Panel title="KPIs" key="KPI">
-          <EditsPerHourPanel titles={[ "One Direction", "Justin Bieber"]}
-            nsTitles={this.props.titles['0']} startTime={this.props.startTime}></EditsPerHourPanel>,
+          <EditsPerHourPanel titles={[ 'One Direction', 'Justin Bieber']}
+    nsTitles={this.props.titles['0']} startTime={this.props.startTime}></EditsPerHourPanel>,
           <JudgementDayPanel botScore={this.props.botScore}></JudgementDayPanel>
         </Panel>
         <Panel key="top-edits" title="Top edits (all wikis)">
