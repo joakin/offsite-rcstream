@@ -1,11 +1,11 @@
 import React from 'react'
 
 export default React.createClass({
-  render: function() {
+  render: function () {
     return (
-      <div className="Panel">
+    <div className="Panel">
         <h2 className="title">{this.props.title}</h2>
-        {this.props.contents}
+        {this.props.children}
       </div>
     )
   }

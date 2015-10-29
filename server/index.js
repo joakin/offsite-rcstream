@@ -6,9 +6,9 @@ var sockjs = require('sockjs')
 var clients = {}
 
 // Broadcast to all clients
-function broadcast(message){
+function broadcast (message) {
   // iterate through each client in clients object
-  for (var client in clients){
+  for (var client in clients) {
     // send the message to that client
     clients[client].write(JSON.stringify(message))
   }
@@ -18,10 +18,10 @@ function broadcast(message){
 var rc = sockjs.createServer({
   sockjs_url: 'http://cdn.jsdelivr.net/sockjs/1.0.1/sockjs.min.js'
 })
-rc.on('connection', function(conn) {
+rc.on('connection', function (conn) {
   // add this client to clients object
   clients[conn.id] = conn
-  conn.on('close', function() { delete clients[conn.id] })
+  conn.on('close', function () { delete clients[conn.id]})
 })
 
 // HTTP server for static assets
@@ -36,10 +36,10 @@ server.listen(9999, '0.0.0.0')
 
 // Connect to rc stream and broadcast the messages
 var socket = io.connect('stream.wikimedia.org/rc')
-socket.on('connect', function() {
+socket.on('connect', function () {
   socket.emit('subscribe', '*')
 })
-socket.on('change', function(data) {
+socket.on('change', function (data) {
   // console.log(data.title)
   broadcast(data)
 })
