@@ -10,7 +10,17 @@ Leaderboard.prototype = {
   hasItems: function () {
     return this.items.length ? true : false
   },
-  addItem: function (newItem, score) {
+  updateExisting: function ( newItem, score ) {
+    var inserted = false;
+    this.items.forEach( function ( item ) {
+      if ( item.title === newItem.title && item.wiki === newItem.wiki ) {
+        item.edits = newItem.edits;
+        inserted = true;
+      }
+    } );
+    return inserted;
+  },
+  addItem: function (newItem) {
     var oldArray = this.items,
       isSameItem = false,
       inserted = false,
@@ -19,14 +29,11 @@ Leaderboard.prototype = {
     if (oldArray.length === 0) {
       this.items.push(newItem)
     } else {
+      inserted = this.updateExisting( newItem );
       newArray = oldArray
       // iterate through array until you find the last item that is.
       oldArray.forEach(function (item, i) {
-        isSameItem = (item.title === newItem.title && item.wiki === newItem.wiki)
-        if (inserted && isSameItem) {
-          // If previously we inserted it remove the old reference
-          newArray.splice(i, 1)
-        } else if (inserted) {
+        if (inserted) {
           return
         } else if (item.edits <= newItem.edits) {
           inserted = true
@@ -34,10 +41,9 @@ Leaderboard.prototype = {
           newArray.splice(i, 0, newItem)
         }
       })
-      // sort out the last item
-      if (inserted && isSameItem) {
-        // If previously we inserted it remove the old reference
-        newArray.splice(newArray.length - 1, 1)
+      // Add to the end if not inserted as it is smaller than everything
+      if ( !inserted ) {
+        newArray.push( newItem );
       }
       this.items = newArray.slice(0, 5)
     }
