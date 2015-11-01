@@ -5,6 +5,7 @@ import JudgementDayPanel from './judgement-day-panel'
 import EditsPerHourPanel from './edits-per-hour-panel'
 import Leaderboard from './leaderboard'
 import Panel from './panel'
+import ActionBox from './action-box'
 
 export default React.createClass({
   render: function () {
@@ -14,6 +15,7 @@ export default React.createClass({
           <EditsPerHourPanel titles={[ 'One Direction', 'Justin Bieber']}
     nsTitles={this.props.titles['0']} startTime={this.props.startTime}></EditsPerHourPanel>,
           <JudgementDayPanel botScore={this.props.botScore}></JudgementDayPanel>
+          <ActionBox titles={this.props.titles}></ActionBox>
         </Panel>
         <Panel key="top-edits" title="Top edits (all wikis)">
           <Leaderboard leaderboard={this.props.leaderboards['*']}></Leaderboard>
@@ -26,6 +28,9 @@ export default React.createClass({
         </Panel>
         <Panel key="top-bots" title="Top bots">
           <Leaderboard leaderboard={this.props.leaderboards['bot']}></Leaderboard>
+        </Panel>
+        <Panel key="top-namespace" title="Top namespace">
+          <Leaderboard leaderboard={this.props.leaderboards.ns}></Leaderboard>
         </Panel>
         <Panel key="speedos" title="Speedometers">
           <SpeedCheckPanel speed={this.props.speed}></SpeedCheckPanel>
