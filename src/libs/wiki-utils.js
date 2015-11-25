@@ -47,6 +47,34 @@ var getLanguage = function (wiki) {
   return getCodes(wiki)[0]
 }
 
+var getNamespaceLabel = function ( ns ) {
+  var label = 'Unknown (' + ns + ')'
+  switch ( ns ) {
+    case 0:
+      label = 'Main';
+      break;
+    case 1:
+      label = 'Talk';
+      break;
+    case 2:
+      label = 'User';
+      break;
+    case 3:
+      label = 'User talk';
+      break;
+    case 6:
+      label = 'File'
+      break;
+    case 14:
+      label = 'Category'
+      break;
+    case 2300:
+      label = 'Gadget'
+      break;
+  }
+  return label;
+};
+
 var getLogo = function (wiki) {
   var src
   var code = getCodes(wiki)
@@ -69,6 +97,7 @@ var getUrl = function (title, wiki) {
 }
 
 module.exports = {
+  getNamespaceLabel: getNamespaceLabel,
   getCodes: getCodes,
   getLanguage: getLanguage,
   getLogo: getLogo,

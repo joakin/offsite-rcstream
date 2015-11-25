@@ -4,7 +4,7 @@ import utils from './../../libs/wiki-utils'
 export default React.createClass({
   render: function () {
     var item = this.props.item
-    var url = utils.getUrl(item.title, item.wiki)
+    var url = item.wiki ? utils.getUrl(item.title, item.wiki) : '#'
 
     return (
     <li className="LeaderboardItem">
