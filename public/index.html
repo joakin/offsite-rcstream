@@ -4,9 +4,22 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
 </head>
 <body>
-	<div id="app">
+	<div id='app'>
 		<h1>Recent changes</h1>
+		<div id='log'>
+		</div>
 	</div>
 	<script>
+		var log = document.getElementById('log')
+
+		var s = new WebSocket('ws://' + location.host)
+		s.onopen = function () {
+			console.log('socket open')
+		}
+		s.onmessage = function (event) {
+			var p = document.createElement('p')
+			p.textContent = event.data
+			log.insertBefore(p, log.firstChild)
+		}
 	</script>
 </body>
