@@ -24,7 +24,7 @@ rc.on('connection', function (conn) {
 // HTTP server for static assets
 var ecstatic = require('ecstatic')
 var server = http.createServer(
-  ecstatic({ root: './public' })
+  ecstatic({ root: __dirname + '/public' })
 ).listen(8080)
 rc.installHandlers(server, {
   prefix: '/rc'
